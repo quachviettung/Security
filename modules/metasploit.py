@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Kết nối với MSFRPC
 try:
-    client = MsfRpcClient(password='quach', username='tung', host='127.0.0.1', port=55553)
+    client = MsfRpcClient(password='nghia')
     logging.info("Kết nối tới MSFRPC thành công!")
 except Exception as e:
     logging.error(f"Không thể kết nối tới MSFRPC: {e}")
@@ -76,4 +76,4 @@ def run_metasploit():
         return jsonify({'error': str(e), 'output': '\n'.join(output) if output else 'Không có đầu ra'}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(debug=True, port=5001)
