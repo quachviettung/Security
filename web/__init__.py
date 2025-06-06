@@ -9,5 +9,5 @@ def create_app():
 
     app.register_blueprint(views, url_prefix='/home') #localhost:5002/home
     app.register_blueprint(auth, url_prefix='/auth') #localhost:5002/login
-
+    
     return app
