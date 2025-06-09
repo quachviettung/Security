@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecTest Framework - Đăng nhập</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <!-- Floating particles -->
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <div class="login-container">
+      <div class="login-card">
+        <div class="login-header">
+          <div class="brand-logo">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="brand-title">SecTest Framework</div>
+          <div class="brand-subtitle">Nền tảng Kiểm thử Bảo mật Tích hợp</div>
+        </div>
+
+        <div class="alert error" id="errorAlert">
+          <i class="fas fa-exclamation-circle"></i>
+          <span id="errorMessage"></span>
+        </div>
+
+        <div class="alert success" id="successAlert">
+          <i class="fas fa-check-circle"></i>
+          <span id="successMessage"></span>
+        </div>
+
+        <form class="login-form" id="loginForm">
+          <div class="form-group">
+            <i class="form-icon fas fa-user"></i>
+            <input
+              type="text"
+              class="form-input"
+              id="username"
+              placeholder="Tên đăng nhập hoặc Email"
+              required
+              autocomplete="username"
+            />
+          </div>
+
+          <div class="form-group">
+            <i class="form-icon fas fa-lock"></i>
+            <input
+              type="password"
+              class="form-input"
+              id="password"
+              placeholder="Mật khẩu"
+              required
+              autocomplete="current-password"
+            />
+            <i class="password-toggle fas fa-eye" id="togglePassword"></i>
+          </div>
+
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" id="rememberMe" />
+              <span>Ghi nhớ đăng nhập</span>
+            </label>
+            <a href="#" class="forgot-password" onclick="showForgotPassword()"
+              >Quên mật khẩu?</a
+            >
+          </div>
+
+          <button type="submit" class="login-btn" id="loginBtn">
+            <span>Đăng nhập</span>
+          </button>
+        </form>
+
+        <div class="divider">
+          <span>hoặc đăng nhập với</span>
+        </div>
+
+        <div class="social-login">
+          <a href="#" class="social-btn" onclick="socialLogin('google')">
+            <i class="fab fa-google"></i>
+            Google
+          </a>
+          <a href="#" class="social-btn" onclick="socialLogin('microsoft')">
+            <i class="fab fa-microsoft"></i>
+            Microsoft
+          </a>
+        </div>
+
+        <div class="security-indicators">
+          <div class="security-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>SSL/TLS</span>
+          </div>
+          <div class="security-item">
+            <i class="fas fa-key"></i>
+            <span>2FA Support</span>
+          </div>
+          <div class="security-item">
+            <i class="fas fa-lock"></i>
+            <span>Encrypted</span>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <a href="#" onclick="showRegister()">Tạo tài khoản mới</a>
+          <a href="#" onclick="showHelp()">Trợ giúp</a>
+          <a href="#" onclick="showPrivacy()">Chính sách bảo mật</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/login.js"></script>
+  </body>
+</html>

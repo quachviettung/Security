@@ -391,15 +391,15 @@
           <div class="framework-module" id="metasploit-module">
             <div class="module-header">
               <div class="module-title">
-                <i class="fas fa-bug"></i> Exploit Framework
+                <i class="fas fa-bug"></i> Khung Khai Thác Metasploit
               </div>
               <div class="module-description">
-                Metasploit - Penetration testing and exploit development
+                Metasploit - Công cụ kiểm tra thâm nhập và phát triển khai thác
               </div>
             </div>
             <div class="module-content">
               <div class="config-grid">
-                <!-- Auxiliary Modules -->
+                <!-- Pre-Exploit Scanning Modules -->
                 <div
                   class="config-card"
                   data-module="auxiliary/scanner/portscan/tcp"
@@ -410,8 +410,50 @@
                       <i class="fas fa-search-plus"></i>
                     </div>
                     <div class="config-info">
-                      <h3>Quét cổng</h3>
+                      <h3>Quét Cổng TCP</h3>
                       <p>Quét các cổng mở trên mục tiêu</p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="config-card"
+                  data-module="auxiliary/scanner/smb/smb_version"
+                  onclick="selectModule(this)"
+                >
+                  <div class="config-header">
+                    <div class="config-icon">
+                      <i class="fas fa-search-plus"></i>
+                    </div>
+                    <div class="config-info">
+                      <h3>Quét Phiên Bản SMB</h3>
+                      <p>Phát hiện phiên bản SMB trên mục tiêu</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Exploit Modules -->
+                <div
+                  class="config-card"
+                  data-module="exploit/windows/smb/ms17_010_eternalblue"
+                  onclick="selectModule(this)"
+                >
+                  <div class="config-header">
+                    <div class="config-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="config-info">
+                      <h3>EternalBlue SMB</h3>
+                      <p>Khai thác lỗ hổng MS17-010 trên Windows SMB</p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="config-card"
+                  data-module="exploit/multi/http/struts2_rest_xstream"
+                  onclick="selectModule(this)"
+                >
+                  <div class="config-header">
+                    <div class="config-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="config-info">
+                      <h3>Struts2 REST XStream</h3>
+                      <p>Khai thác lỗ hổng Apache Struts2 REST plugin</p>
                     </div>
                   </div>
                 </div>
@@ -442,7 +484,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- Post Modules -->
+                <!-- Post-Exploit Modules -->
                 <div
                   class="config-card"
                   data-module="post/windows/gather/credentials"
@@ -451,45 +493,69 @@
                   <div class="config-header">
                     <div class="config-icon"><i class="fas fa-key"></i></div>
                     <div class="config-info">
-                      <h3>Hậu khai thác Credentials</h3>
+                      <h3>Hậu Khai Thác Credentials</h3>
                       <p>Thu thập thông tin đăng nhập</p>
                     </div>
                   </div>
                 </div>
+                <div
+                  class="config-card"
+                  data-module="post/multi/manage/shell_to_meterpreter"
+                  onclick="selectModule(this)"
+                >
+                  <div class="config-header">
+                    <div class="config-icon"><i class="fas fa-key"></i></div>
+                    <div class="config-info">
+                      <h3>Nâng Cấp Shell</h3>
+                      <p>Chuyển shell thành phiên Meterpreter</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <!-- Tùy chọn cấu hình gọn gàng -->
+
+              <!-- Tùy chọn cấu hình -->
               <div class="module-options">
                 <div class="row-1">
-                  <label for="metasploit-module">Module:</label>
+                  <label>Module:</label>
                   <input
                     type="text"
-                    id="metasploit-module"
+                    id="metasploit-module-input"
                     placeholder="exploit/multi/samba/usermap_script"
                   />
-                  <label for="metasploit-lhost">LHOST:</label>
+                  <label>RHOST:</label>
+                  <input
+                    type="text"
+                    id="metasploit-rhost"
+                    placeholder="192.168.1.100"
+                  />
+                  <label>LHOST:</label>
                   <input
                     type="text"
                     id="metasploit-lhost"
                     placeholder="192.168.90.132"
                   />
-                  <label for="metasploit-lport">LPORT:</label>
-                  <input type="text" id="metasploit-lport" placeholder="4444" />
                 </div>
                 <div class="row-2">
-                  <label for="metasploit-rport">RPORT:</label>
-                  <input
-                    type="text"
-                    id="metasploit-rport"
-                    placeholder="Cổng (ví dụ: 4444)"
-                  />
-                  <label for="metasploit-payload">Payload:</label>
+                  <label>RPORT:</label>
+                  <input type="text" id="metasploit-rport" placeholder="445" />
+                  <label>LPORT:</label>
+                  <input type="text" id="metasploit-lport" placeholder="4444" />
+                  <label>Payload:</label>
                   <input
                     type="text"
                     id="metasploit-payload"
-                    placeholder="Payload (ví dụ: windows/meterpreter/reverse_tcp)"
+                    placeholder="windows/meterpreter/reverse_tcp"
+                  />
+                  <label style="display: none">Session ID:</label>
+                  <input
+                    type="text"
+                    id="metasploit-session-id"
+                    placeholder="Nhập ID session cho hậu khai thác"
+                    style="display: none"
                   />
                 </div>
               </div>
+
               <div class="status-indicator-group" id="metasploit-status">
                 <div class="status-item idle">
                   <i class="fas fa-info-circle"></i> Trạng thái: Chưa thực thi
@@ -503,6 +569,7 @@
                   <span id="metasploit-start-time">Chưa bắt đầu</span>
                 </div>
               </div>
+
               <div class="action-toolbar">
                 <div class="toolbar-group">
                   <button
@@ -513,12 +580,13 @@
                   </button>
                   <button
                     class="toolbar-btn btn-export"
-                    onclick="exportReport('metasploit')"
+                    onclick="exportReport()"
                   >
-                    <i class="fas fa-file-export"></i> Xuất báo cáo Metasploit
+                    <i class="fas fa-file-export"></i> Xuất Báo Cáo
                   </button>
                 </div>
               </div>
+
               <div class="framework-terminal">
                 <div class="terminal-header">Metasploit Command Output</div>
                 <div id="metasploit-output">
@@ -530,15 +598,80 @@
               </div>
             </div>
           </div>
-          <script>
-            let currentModule = "auxiliary/scanner/portscan/tcp"; // Mặc định
 
+          <!-- SCRIPT -->
+          <script>
             function selectModule(element) {
               document
-                .querySelectorAll("#metasploit-module .config-card")
+                .querySelectorAll(".config-card")
                 .forEach((card) => card.classList.remove("selected"));
               element.classList.add("selected");
-              currentModule = element.getAttribute("data-module");
+              const module = element.getAttribute("data-module");
+              document.getElementById("metasploit-module-input").value = module;
+            }
+
+            function runMetasploit() {
+              const module = document.getElementById(
+                "metasploit-module-input"
+              ).value;
+              const lhost = document.getElementById("metasploit-lhost").value;
+              const lport = document.getElementById("metasploit-lport").value;
+              const rport = document.getElementById("metasploit-rport").value;
+              const payload =
+                document.getElementById("metasploit-payload").value;
+              const target = prompt("Nhập địa chỉ IP mục tiêu (RHOSTS):");
+
+              if (!target) return;
+
+              document.getElementById("metasploit-target-status").innerText =
+                target;
+              document.getElementById("metasploit-start-time").innerText =
+                new Date().toLocaleTimeString();
+              document.getElementById("metasploit-output").innerHTML =
+                '<div class="terminal-line"><span class="terminal-prompt">msf6 ></span> Đang thực thi...</div>';
+
+              fetch("http://localhost:5001/metasploit/run", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  module: module,
+                  target: target,
+                  options: {
+                    LHOST: lhost,
+                    LPORT: lport,
+                    RPORT: rport,
+                    PAYLOAD: payload,
+                  },
+                }),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  const output =
+                    data.output || data.error || "Không có kết quả";
+                  document.getElementById("metasploit-output").innerHTML =
+                    '<div class="terminal-line"><span class="terminal-prompt">msf6 ></span> ' +
+                    output.replace(
+                      /\n/g,
+                      "<br><span class='terminal-prompt'>msf6 ></span> "
+                    ) +
+                    "</div>";
+                })
+                .catch((err) => {
+                  document.getElementById("metasploit-output").innerHTML =
+                    '<div class="terminal-line">❌ Lỗi kết nối đến Flask API.</div>';
+                });
+            }
+
+            function exportReport() {
+              const output =
+                document.getElementById("metasploit-output").innerText;
+              const blob = new Blob([output], { type: "text/plain" });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = `metasploit-report-${Date.now()}.txt`;
+              a.click();
+              URL.revokeObjectURL(url);
             }
           </script>
 

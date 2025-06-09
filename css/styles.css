@@ -1023,6 +1023,40 @@ body {
   }
 }
 
+/* --- Chỉnh lại độ rộng cho khung nhập Metasploit --- */
+
+/* Ô nhập Module (thường dài hơn nên cho rộng hơn) */
+#metasploit-module-input {
+  max-width: 300px; /* điều chỉnh cho vừa với "exploit/multi/samba/usermap_script" */
+  width: 100%;
+}
+
+/* Ô nhập Payload (thường chứa đường dẫn payload dài) */
+#metasploit-payload {
+  max-width: 360px; /* đủ rộng để hiển thị "windows/meterpreter/reverse_tcp" */
+  width: 100%;
+}
+
+/* Ô nhập LHOST, LPORT, RPORT */
+#metasploit-lhost,
+#metasploit-lport,
+#metasploit-rport {
+  max-width: 140px; /* vừa đủ để chứa địa chỉ IP hoặc số cổng */
+  width: 100%;
+}
+
+/* Khi màn hình hẹp, các ô vẫn chiếm toàn bộ chiều rộng */
+@media (max-width: 768px) {
+  #metasploit-module-input,
+  #metasploit-payload,
+  #metasploit-lhost,
+  #metasploit-lport,
+  #metasploit-rport {
+    max-width: none;
+    width: 100%;
+  }
+}
+
 /* Progress Bar */
 .progress-container {
   margin: 20px 0;
